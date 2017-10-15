@@ -1,0 +1,19 @@
+<div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h2 class="modal-title"><strong>Email Status</strong></h2>
+        </div>
+        <div class="modal-body">
+            <h4 class="modal-title"><strong>Success!</strong></h4>
+            <script>
+                setTimeout(function() { jQuery('#modal').modal('hide'); }, 1500);
+                $('body').on('hidden.bs.modal', '.modal', function () {
+                    $(this).removeData('bs.modal');
+                });
+            </script>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+</div>

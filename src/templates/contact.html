@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}Contact | {{ block.super }}{% endblock head_title %}
+
+{% block content %}
+<!-- {# <h2> inside contact.html now </h2>
+<a href="mailto:myemail@gmail.com">Email us</a> #} -->
+
+<div class="container">
+    <h2>{{ title }}</h2><br />
+
+    <form method='POST' action=''>{% csrf_token %}
+        {{ form|crispy }}
+
+<!-- {#         <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#responseDialog">Submit</button> #} -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+
+
+{% endblock content %}

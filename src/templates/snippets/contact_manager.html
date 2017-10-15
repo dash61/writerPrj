@@ -1,0 +1,30 @@
+<!-- {# From: https://github.com/abidibo/aidsbank/blob/master/templates/aidsbank/asset_edit_manager.html, and modified.
+This was his Asset Edit Manager dialog. #} -->
+
+
+{% load crispy_forms_tags %}
+
+<div class="modal-dialog modal-lg" role="document">
+    <form id="comment_dlg_form" method='post' class="form" role="form" action='{% url 'contact' %}'>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" aria-hidden="true">&times;</button>
+                <h2 class="modal-title"><strong>Contact Us</strong></h2>
+            </div>
+            <div class="modal-body">
+                {{ form|crispy }}{% csrf_token %}
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
+                <input type="submit" class="btn btn-info" value="Submit" />
+            </div>
+        </div>
+    </form>
+    <script>
+        var form_options = {
+            target: '#modal',
+            success: function(response) {}
+        };
+        $('#comment_dlg_form').ajaxForm(form_options);
+    </script>
+</div>

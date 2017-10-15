@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block head_title %}Book | {{ block.super}}{% endblock head_title %}
+
+{% block content %}
+<h1>Book Detail</h1>
+
+<h2>{{ object.title }}: <small> {{ object.subtitle }} </small></h2>
+<p>{{ object.descr }}</p>
+<p>{{ object.datePub }}</p>
+<p>${{ object.price }}</p>
+<br />
+<img src={{ object.image }} alt="book jacket image" />
+
+{% endblock %}
