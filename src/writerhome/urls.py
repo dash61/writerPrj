@@ -7,7 +7,7 @@ from django.conf import settings
 from django.conf.urls import url
 from django.conf.urls.static import static
 from .views import (
-    BooksListView, BookDetailView, BookCreateView, BookUpdateView) # use ()s to put on multiple lines (if a lot)
+    BooksListView, BookCreateView, BookUpdateView) # use ()s to put on multiple lines (if a lot)
 
 urlpatterns = [
     url(r'^create/$', BookCreateView.as_view(), name='create'),

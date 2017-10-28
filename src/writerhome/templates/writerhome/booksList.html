@@ -1,49 +1,59 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
-{% block head_title %}Books | {{ block.super}}{% endblock head_title %}
+{% block head_title %}My Books | {{ block.super}}{% endblock head_title %}
 
 {% block content %}
 
-<div class="row" style="height:100px;">
-    <h1 style="float:left; padding-left:15px;">My Books</h1>
-    <div class="col-sm-4" style="margin-top:20px; margin-bottom:10px; float:right">
-        <form class='form' method='GET'  action='.' role='search'>
-            <div class="input-group" >
-                <input type="text" class="form-control" placeholder="Search..." name="q" value='{{ request.GET.q }}'>
-                <span class="input-group-btn">
-                    <button type="submit" class="btn btn-default">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                </span>
-            </div>
-        </form>
+<div class='outer'>
+    <div class="row">
+        <!-- h2 has a padding-left of 15 because row has a built-in padding-left of -15px -->
+        <my-title class='page-title'>My Books</my-title>
+        <div class="col-sm-4 book-search">
+            <form class='form' method='GET'  action='.' role='search'>
+                <div class="input-group" >
+                    <input type="text" class="form-control" placeholder="Search..." name="q" value='{{ request.GET.q }}'>
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div class='row' style="padding-bottom: 10px;">
-{% for obj in books %}
-    <div class='col-sm-4 book-tile'>
-        <div class='book-tile-content'>
-            <div class='gallery'>
-                <img src={{ obj.image.url }}>
+<div class='row' style="padding-bottom: 60px;">
+    <div id='bookshelf' class='bookshelf'>
+        {% for obj in books %}
+            <div class='col-sm-4 book-tile details-close'>
+                <div class='book-tile-content'>
+                    <div class='book gallery'>
+                        <img src={{ obj.image.url }}>
+                    </div>
+                    <figcaption>
+                        <h2>{{ obj.title|capfirst }}</h2>
+                        <div class='buttons'>
+                            <a href="#">Details</a>
+                        </div>
+                    </figcaption>
+                    <div class='details'>
+                        <ul>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.</li>
+                            <li>Funky Press</li>
+                            <li>{{ obj.datePub }}</li>
+                            <li>$ {{ obj.price }}</li>
+                        </ul>
+                        
+                    </div>
+                </div>
             </div>
-            <div class='book-details'>
-                <h5><strong><a href='{{ obj.get_absolute_url }}'>{{ obj.title|capfirst }}</a></strong></h5>
-                <h6>by <strong>{{ obj.author|capfirst }}</strong></h6>
-                <ul  style="padding-left: 0px;">
-                    {# OLD WAY <li><a href='{% url "detail" slug=obj.slug %}'>{{ obj }}</a> <br/> #} {# newer way using url names #}
-                    {# OLD WAY <li><a href="/books/{{ obj.slug }}/">{{ obj }}</a> <br/> #}
-                    Category: {{ obj.category }}<br />
-                    Published: {{ obj.datePub }}<br />
-                    Price: ${{ obj.price }}<br />
-                </ul>
-            </div>
-        </div>
+        {% empty %}
+            <li><a href='{% url "writerhome:create" %}'>Add a Book</a></li>
+        {% endfor %}
     </div>
-{% empty %}
-    <li><a href='{% url "writerhome:create" %}'>Add a Book</a></li>
-{% endfor %}
 </div>
 
 {% endblock %}

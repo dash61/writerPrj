@@ -3,8 +3,17 @@
 
 
 {% block content %}
-<h2> Welcome </h2>
-<h4>This is an example website using:<br />
-    Django, Python, Javascript, Django Rest Framework, ...</h4>
-<h4>(add Bootstrap, SVG, node?, fontawesome, etc)</h4>
+
+<div class='outer'>
+    <div class='row'>
+        <my-title class='page-title'>Welcome</my-title>
+    </div>
+    <div class='row' id='body-content'>
+        <h4>This is a fictional site of a literary author (Arthur D. Books), just as an example.</h4>
+        <h4>It uses:</h4>
+        <h4>&bull; Django, Python, Javascript/HTML/CSS, Bootstrap, jQuery, and django-blog-it.</h4>
+        <h4>&bull; Fonts: Quicksand and GT-Pressura-Mono (footer bar only).</h4>
+    </div>
+</div>
+
 {% endblock content %}

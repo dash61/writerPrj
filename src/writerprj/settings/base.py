@@ -19,8 +19,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
+def get_env_variable(var_name):
+       """Get the environment variable or return exception """
+       try:
+         return os.environ[var_name]
+       except KeyError:
+         error_msg = "Set the %s environment variable" % var_name
+         raise ImproperlyConfigured(error_msg)  
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@oxcdl8+-3s$#pdzz8a$vb=mvr)yq$n%)_)ny+*wqc8-3lx2lu'
+SECRET_KEY = get_env_variable("SECRET_KEY")
 
 # Do something like this instead:
 #from .key import get_key           # DON'T GIT THE key.py FILE!
@@ -53,9 +61,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'crispy_forms',
     'csp',
     'writerhome',
+    'simple_pagination',
+    'django_blog_it.django_blog_it',
 ]
 
 MIDDLEWARE = [
@@ -69,18 +80,22 @@ MIDDLEWARE = [
     'csp.middleware.CSPMiddleware',
 ]
 
+# Disquss details
+DISQUS_SHORTNAME="www-zobasoft-biz-example-1"
+
 # Keep our policy as strict as possible
 if DEBUG:
     # CSP_SCRIPT_SRC = ("'self'", 'https://code.jquery.com', 'cdnjs.cloudflare.com', 'maxcdn.bootstrapcdn.com')
-    CSP_SCRIPT_SRC = ("'self'", 'http://localhost', 'ajax.googleapis.com', 'cdnjs.cloudflare.com', "'unsafe-inline'", "'unsafe-eval'")
-    CSP_STYLE_SRC = ("'self'", 'code.jquery.com', 'cdnjs.cloudflare.com', 'maxcdn.bootstrapcdn.com', "'unsafe-inline'")
-    CSP_FONT_SRC = ("'self'", 'cdnjs.cloudflare.com', 'maxcdn.bootstrapcdn.com')
+    CSP_SCRIPT_SRC = ("'self'", 'http://localhost', 'c.disquscdn.com', 'ajax.googleapis.com', 'disqus.com', 'www-zobasoft-biz-example-1.disqus.com', 'cdnjs.cloudflare.com', 'maxcdn.bootstrapcdn.com', "'unsafe-inline'", "'unsafe-eval'")
+    CSP_STYLE_SRC = ("'self'", 'code.jquery.com', 'c.disquscdn.com', 'cdnjs.cloudflare.com', 'maxcdn.bootstrapcdn.com', 'use.fontawesome.com', 'fonts.googleapis.com', "'unsafe-inline'")
+    CSP_FONT_SRC = ("'self'", 'cdnjs.cloudflare.com', 'maxcdn.bootstrapcdn.com', 'use.fontawesome.com', 'fonts.gstatic.com')
     CSP_IMG_SRC = ("'self'",)
     CSP_DEFAULT_SRC = ("'self'", 'http://localhost')
     #CSP_REPORT_URI = 'csp_report.json'
     CSP_OBJECT_SRC = ("'none'",)
     CSP_BASE_URI = ("'none'",)
     CSP_FRAME_SRC = CSP_SCRIPT_SRC
+    CSP_CHILD_SRC = ('disqus.com',)
     #CSP_CONNECT_SRC for ajax calls or websockets
 ROOT_URLCONF = 'writerprj.urls'
 

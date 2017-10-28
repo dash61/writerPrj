@@ -1,43 +1,39 @@
 {% load staticfiles %}
 
 <div id="footer-div">
-<!-- {#     <footer id="my-footer">
-         <a href='http://www.freepik.com/free-vector/bright-background-with-dots_1252906.htm'>Background Image Designed by Freepik</a>
-    </footer> #} -->
-
     <div class="thinblueline">
     </div>
     <section id="colophon">
         <div>
-            <p class="copyright">&copy; 2017 Zoba LLC &nbsp;&nbsp;| &nbsp;&nbsp;Credits &nbsp;&nbsp;| &nbsp;&nbsp;License</p>
+            <p class="copyright">&copy; 2017 Zoba LLC &nbsp;&nbsp;| &nbsp;&nbsp;<a href="{% url 'credits' %}">Credits</a> &nbsp;&nbsp;| &nbsp;&nbsp;<a href="{% url 'license' %}">License</a></p>
         </div>
         <div class="social-icons">
-            <a class="social mytooltip" href="https://codepen.io/Dash61/" target="_blank">
+            <a class="social mytooltip" href="https://codepen.io" target="_blank">
                 <img class="idle" height="20" width="20" src="{% static 'img/icons8-codepen_filled_dblue.png' %}" style="visibility: inherit; opacity: 1;">
                 <img class="hover" height="20" width="20" src="{% static 'img/icons8-codepen_filled_blue.png' %}" style="visibility: hidden; opacity: 0;">
                 <span class="mytooltiptext">CodePen</span>
             </a>
-            <a class="social mytooltip" href="https://github.com/dash61/" target="_blank">
+            <a class="social mytooltip" href="https://github.com" target="_blank">
                 <img class="idle" height="20" width="20" src="{% static 'img/icons8-github_filled_dblue.png' %}" style="visibility: inherit; opacity: 1;">
                 <img class="hover" height="20" width="20" src="{% static 'img/icons8-github_filled_blue.png' %}" style="visibility: hidden; opacity: 0;">
                 <span class="mytooltiptext">GitHub</span>
             </a>
-            <a class="social mytooltip" href="https://bitbucket.org/dash61/" target="_blank">
+            <a class="social mytooltip" href="https://bitbucket.org" target="_blank">
                 <img class="idle" height="20" width="20" src="{% static 'img/icons8-bitbucket_filled_dblue.png' %}" style="visibility: inherit; opacity: 1;">
                 <img class="hover" height="20" width="20" src="{% static 'img/icons8-bitbucket_filled_blue.png' %}" style="visibility: hidden; opacity: 0;">
                 <span class="mytooltiptext">BitBucket</span>
             </a>
-            <a class="social mytooltip" href="https://www.facebook.com/donald.r.lilly" target="_blank">
+            <a class="social mytooltip" href="https://www.facebook.com" target="_blank">
                 <img class="idle" height="20" width="20" src="{% static 'img/icons8-facebook_dblue.png' %}" style="visibility: inherit; opacity: 1;">
                 <img class="hover" height="20" width="20" src="{% static 'img/icons8-facebook_blue.png' %}" style="visibility: hidden; opacity: 0;">
                 <span class="mytooltiptext">Facebook</span>
             </a>
-            <a class="social mytooltip" href="https://plus.google.com/u/0/109100730416286028451" target="_blank">
+            <a class="social mytooltip" href="https://plus.google.com" target="_blank">
                 <img class="idle" height="20" width="20" src="{% static 'img/icons8-google_plus_dblue.png' %}" style="visibility: inherit; opacity: 1;">
                 <img class="hover" height="20" width="20" src="{% static 'img/icons8-google_plus_blue.png' %}" style="visibility: hidden; opacity: 0;">
                 <span class="mytooltiptext">Google+</span>
             </a>
-            <a class="social mytooltip" href="https://www.linkedin.com/in/don-lilly-996719/" target="_blank">
+            <a class="social mytooltip" href="https://www.linkedin.com" target="_blank">
                 <img class="idle" height="20" width="20" src="{% static 'img/icons8-linkedin_dblue.png' %}" style="visibility: inherit; opacity: 1;">
                 <img class="hover" height="20" width="20" src="{% static 'img/icons8-linkedin_blue.png' %}" style="visibility: hidden; opacity: 0;">
                 <span class="mytooltiptext">LinkedIn</span>

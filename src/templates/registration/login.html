@@ -4,10 +4,12 @@
 {% block content %}
 
 {% if form.errors %}
+<br/>
 <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
 
 {% if next %}
+    <br/>
     {% if user.is_authenticated %}
     <p>Your account doesn't have access to this page. To proceed,
     please login with an account that has access.</p>
@@ -16,11 +18,11 @@
     {% endif %}
 {% endif %}
 
-<form method="post" action="{% url 'login' %}">
+<form class="mylogin" method="post" action="{% url 'login' %}">
 {% csrf_token %}
 {{ form | crispy }}
 
-<input type="submit" value="login" />
+<input type="submit" class="btn btn-primary" value="Login" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
 

@@ -96,7 +96,6 @@ class ContactManagerView(View):
     print ("inside ContactManagerView")
 
     def get(self, request, *args, **kwargs):  # default arg list
-        print ("inside get function")
         context = {
             "form": self.form_class,
             "title": self.title,
@@ -134,14 +133,21 @@ class ContactManagerView(View):
 
         return render(request, "snippets/contact_manager_success.html", {})
 
+class CreditsView(TemplateView):
+    print("inside class CreditsView")
+    template_name = 'credits.html'
+
+class LicenseView(TemplateView):
+    print("inside class LicenseView")
+    template_name = 'license.html'
 
 class BioView(TemplateView):
     print("inside class BioView")
     template_name = 'bio.html'
 
-class BlogView(TemplateView):
-    print("inside class BlogView")
-    template_name = 'blog.html'
+# class BlogView(TemplateView):
+#     print("inside class BlogView")
+#     template_name = 'blog.html'
 
 @login_required() # login_url='/login/') #  - MOVED login_url TO BASE.PY SETTINGS FILE
 def book_createview(request):
@@ -182,11 +188,11 @@ def book_createview(request):
     return render(request, template_name, context)
 
 
-class BooksListView(LoginRequiredMixin, ListView):
+class BooksListView(ListView):
     template_name = 'writerhome/booksList.html' # could use default template name of <modelname_list.html>
 
     def get_queryset(self):
-        return WriterPrjAllBooks.objects.filter(owner=self.request.user)
+        return WriterPrjAllBooks.objects.all()
         # slug = self.kwargs.get("slug") # kwargs is a dict
         # if slug:
         #     queryset = WriterPrjAllBooks.objects.filter(
@@ -199,35 +205,18 @@ class BooksListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(BooksListView, self).get_context_data(*args, **kwargs)
-        user = self.request.user
+        #user = self.request.user
         #print(user)
-        query = self.request.GET.get('q')
-        items_exist = WriterPrjAllBooks.objects.filter(owner=user).exists()
-        qs = WriterPrjAllBooks.objects.filter(owner=user).search(query)
-        if items_exist and qs.exists():
+        #query = self.request.GET.get('q')
+        #items_exist = WriterPrjAllBooks.objects.filter(owner=user).exists()
+        qs = WriterPrjAllBooks.objects.all() # WriterPrjAllBooks.objects.filter(owner=user).search(query)
+        #if items_exist and qs.exists():
+        if qs.exists():
             context['books'] = qs
         return context
 
-class BookDetailView(LoginRequiredMixin, DetailView):
-    template_name = 'writerhome/writerprjallbooks_detail.html' # using default name
-
-    def get_queryset(self):
-        return WriterPrjAllBooks.objects.filter(owner=self.request.user)
-
-    # don't need this anymore:
-    # def get_context_data(self, *args, **kwargs):
-    #     #print (self.kwargs)
-    #     context = super(BooksDetailView, self).get_context_data(*args, **kwargs)
-    #     #print (context)
-    #     return context
-
-    # don't need this anymore after we wired up slugs right (and all db items have a slug):
-    # def get_object(self, *args, **kwargs):
-    #     book_id = self.kwargs.get('book_id')
-    #     obj = get_object_or_404 (WriterPrjAllBooks, id=book_id) # or pk=book_id
-    #     return obj
-
 # BEST way of doing forms
+# NOTE - THIS SHOULDN'T BE LOGIN REQUIRED, BUT ADMIN REQUIRED
 class BookCreateView(LoginRequiredMixin, CreateView): # use mixin for class based views
     form_class = WriterPrjAllBooksCreateForm
     template_name = 'form.html' # points now to more generic file in topmost templates folder
@@ -246,6 +235,7 @@ class BookCreateView(LoginRequiredMixin, CreateView): # use mixin for class base
         return context
 
 # BEST way of doing forms
+# NOTE - THIS SHOULDN'T BE LOGIN REQUIRED, BUT ADMIN REQUIRED
 class BookUpdateView(LoginRequiredMixin, UpdateView): # use mixin for class based views
     form_class = WriterPrjAllBooksCreateForm
     template_name = 'writerhome/detail-update.html' # new to be able to view detail and update at the same time
