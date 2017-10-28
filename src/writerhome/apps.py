@@ -6,6 +6,6 @@ class WriterHomeAppConfig(AppConfig):
 
     def ready(self):
         super(WriterHomeAppConfig, self).ready()
-        print("Inside ready function, before signal_init")
+        #print("Inside ready function, before signal_init")
         signal_init()
-        print("Inside ready function, after signal_init")
+        #print("Inside ready function, after signal_init")

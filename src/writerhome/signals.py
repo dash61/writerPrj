@@ -15,7 +15,7 @@ def wh_pre_save_receiver(sender, instance, dispatch_uid="wh_pre_save_receiver", 
     # for count, thing in enumerate(args):
     #     print ('{0} - {1}'.format(count, thing))
     instance.title = string.capwords(instance.title) # force capitalization of first letters
-    print('saving... ' + instance.title)
+    #print('saving... ' + instance.title)
     if not instance.slug:
         instance.slug = unique_slug_generator(instance)
     return HttpResponseRedirect('/list/')

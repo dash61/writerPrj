@@ -69,7 +69,7 @@ def activate_user_view(request, code=None, *args, **kwargs):
 
 class HomeView(TemplateView):
     template_name = 'home.html'
-    print("inside class HomeView")
+    #print("inside class HomeView")
 
     # override method of TemplateView to do special stuff:
     def get_context_data(self, *args, **kwargs):
@@ -93,7 +93,7 @@ class ContactManagerView(View):
     template_name = 'snippets/contact_manager.html'
     title = 'Contact Us'
     title_align_center = True
-    print ("inside ContactManagerView")
+    #print ("inside ContactManagerView")
 
     def get(self, request, *args, **kwargs):  # default arg list
         context = {
@@ -134,15 +134,15 @@ class ContactManagerView(View):
         return render(request, "snippets/contact_manager_success.html", {})
 
 class CreditsView(TemplateView):
-    print("inside class CreditsView")
+    #print("inside class CreditsView")
     template_name = 'credits.html'
 
 class LicenseView(TemplateView):
-    print("inside class LicenseView")
+    #print("inside class LicenseView")
     template_name = 'license.html'
 
 class BioView(TemplateView):
-    print("inside class BioView")
+    #print("inside class BioView")
     template_name = 'bio.html'
 
 # class BlogView(TemplateView):

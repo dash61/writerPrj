@@ -6,39 +6,49 @@
     border-width: 0 1px 1px 0;*/
 }
 
-.sidebar.menu-min {
-    width: 43px;
-}
-
 .sidebar {
-    float:left;
-    position:static;
-    padding-left:0;
-    padding-right:0;
+    display: inline;
+    /*position: static;*/
+    padding-left: 0;
+    padding-right: 0;
 }
 
-.sidebar::before {
-    content:"";
-    display:block;
-    width:inherit;
-    position:absolute;
-    top:0;
-    bottom:0;
-    z-index:-1;
-/*    background-color:inherit;
-    border-style:inherit;
-    border-color:inherit;
-    border-width:inherit;*/
+/* Use the following for 662px and narrower */
+@media (max-width: 662px) {
+    .sidebar.menu-min {
+        float: left;
+    }
+}
+/* Use the following for 663px and wider */
+@media (min-width: 663px) {
+    .sidebar.menu-min {
+        width: 143px;
+        float: right;
+    }
+}
+
+ul.nav.list-group {
+    overflow: visible;
 }
 
 .list-group {
-    margin:0;
-    padding:0;
+    margin: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     list-style:none;
+    position: relative;
+    right: 0;
 }
 
-div {  /* from main-container code */
-    display: block;
+.nav li {
+    float: left;
+}
+
+.myicons.menu-icon.fa {
+    color: #266ccf;
+}
+.myicons.menu-icon.fa:hover {
+    color: #266cff;
 }
 /*
 .clearfix::before, .clearfix::after, .container::before, .container::after,
@@ -55,16 +65,18 @@ div {  /* from main-container code */
     content:" ";
 }
 
-.nav {
-    padding-left: 0;
+ul.nav {
+    padding-left: 10px;
     margin-bottom: 0;
     list-style: none;
-    border-style: none; /* if you want borders, delete this line */
+    border-style: none;
 }
 
 .list-group { /* if you want borders, delete this section */
     border-style: none; 
     box-shadow: 0 0 0 0;
+    display: inline-flex;
+    float: right;
 }
 
 /* gives bold to selected menu text */
@@ -90,32 +102,37 @@ div {  /* from main-container code */
 
 .list-group > li:hover > a {
     background-color: transparent; /*#FFF;*/
-    color: #266cad;
+    color: #266cff;
+}
+
+.list-group > li:hover {
+    background-color: transparent; /*#FFF;*/
+    /*color: #266cad;*/ /* no effect on icon */
 }
 
 .list-group > li {
-    display:block;
-    position:relative;
-    float:none;
-    padding:0;
-    border-style:none; /*solid;*/
+/*    display: block;*/
+    position: relative;
+    float: left;
+    padding: 0;
+    border-style: none; /*solid;*/
 /*    border-width:1px 0 0;
     border-color: #E5E5E5*/;
 }
 
-.list-group > li::before {
+/* uncomment this to get the 'bar' above the icon when hovering */
+/*.list-group > li::before {
     display: none;
     content: "";
     position: absolute;
-    top: -1px;
+    top: 0;
     left: 0;
     z-index: 1;
-    height: 41px;
-    width: 3px;
-    max-width: 3px;
+    height: 3px;
+    width: 44px;
     overflow: hidden;
-    background-color: #266cad; /*#629CC9;*/
-}
+    background-color: #266cad;
+}*/
 
 .sidebar .list-group > li > a {
     position:relative;
@@ -144,7 +161,7 @@ div {  /* from main-container code */
     font-size:13px;
     text-decoration:none;
     background-color: transparent; /*#F8F8F8;*/
-    color: #585858;
+    color: #266cad;
 }
 
 .sidebar .list-group > li > a > .menu-icon {
@@ -194,15 +211,15 @@ a:focus {
 
 .sidebar .list-group > li > a > .menu-text { /* made menu text disappear until hover, just need correct size now */
     display: none;
-    text-align: left;
+    text-align: center;
     position: absolute;
-    top: 0px;
-    left: 42px;
+    top: 40px;
+    left: -50px;
     z-index: 1025;
-    width: 100px;
+    width: 90px;
     height: 41px;
     line-height: 38px;
-    padding-left: 12px;
+    padding-left: 0;
     border-style: none; /*solid*/
     /*border-width: 1px;*/
     background-color: rgba(245,245,245,0.95); /*#F5F5F5;*/
