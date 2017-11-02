@@ -5,6 +5,7 @@
 
 {% block content %}
 
+<div class='book-list-page'>
 <div class='outer'>
     <div class="row">
         <!-- h2 has a padding-left of 15 because row has a built-in padding-left of -15px -->
@@ -45,15 +46,16 @@
                             <li>Funky Press</li>
                             <li>{{ obj.datePub }}</li>
                             <li>$ {{ obj.price }}</li>
-                        </ul>
-                        
+                        </ul>                        
                     </div>
+                    <div class='spine'></div>
                 </div>
             </div>
         {% empty %}
             <li><a href='{% url "writerhome:create" %}'>Add a Book</a></li>
         {% endfor %}
     </div>
+</div>
 </div>
 
 {% endblock %}

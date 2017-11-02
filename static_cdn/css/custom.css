@@ -53,10 +53,16 @@ body {
     background-color: rgba(19, 54, 87, 0.95);
 }
 
-/* Use the following for 342px and narrower */
-@media (max-width: 342px) {
+/* Use the following for 390px and narrower */
+@media (max-width: 390px) {
     #top-header, #top-header-link {
         font-size: 32px;
+    }
+}
+/* Use the following for 350px and narrower */
+@media (max-width: 350px) {
+    #top-header, #top-header-link {
+        font-size: 28px;
     }
 }
 
@@ -89,23 +95,28 @@ my-title {
 }
 
 /* Use the following for 594px and narrower */
-@media (max-width: 594px) {
+@media (max-width: 628px) {
     #scroll-wrap my-title:first-child {
         width: 100%;
         float: left;
         padding-top: 0px;
         margin-top: 0px;
     }
+/*    #sidebar {
+        width: 65%;
+        margin-left: auto;
+        margin-right: auto;
+    }*/
 }
 /* Use the following for 595 - 625 */
-@media (min-width: 595px) and (max-width: 625px) {
+@media (min-width: 629px) and (max-width: 645px) {
     #scroll-wrap my-title:first-child {
         float: left;
         padding-top: 29px;
     }
 }
 /* Use the following for 626+ */
-@media (min-width: 626px) {
+@media (min-width: 646px) {
     #scroll-wrap my-title:first-child {
         float: left;
         padding-top: 29px;
@@ -224,8 +235,8 @@ my-title {
 }
 
 img.bioimage {
-    height: 100px;
-    width: 53px;
+    height: 120px;
+    width: 120px;
 }
 
 img.idle {

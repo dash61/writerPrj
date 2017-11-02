@@ -17,6 +17,10 @@ class ContactForm(forms.Form):
     email = forms.EmailField(label="Email", required=True, max_length=100, min_length=4, widget=forms.EmailInput)
     message = forms.CharField(label="Message", required=True, widget=forms.Textarea, max_length=5000)
 
+    # do the following just to add the autofocus attr to the full_name field
+    def __init__(self, *args, **kwargs):
+        super(ContactForm, self).__init__(*args, **kwargs) # need to call this or the next line fails
+        self.fields['full_name'].widget.attrs.update({'autofocus':'autofocus'})
 
 # from https://kirr.co/bhpno4,   src->accounts->forms.py
 # This is for user registration, video chapter 44.

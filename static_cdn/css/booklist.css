@@ -8,6 +8,10 @@ body {
     height: 100%;
 }
 
+/*.book-list-page {
+    background-color: #558fda;
+}*/
+
 div.book-search {
     margin-top: 50px;
     margin-bottom: 10px;
@@ -26,16 +30,19 @@ div.book-search {
     display: inline;
     vertical-align: center;
     /*line-height: 28px;*/
-}*/
+/*}*/
 
-div.gallery {
+div.book.gallery {
     /*border: 1px solid #ccc;*/
+    left: 6px;
+    top: 8px;
 }
 
 div.gallery img {
-    width: 100%;
+    width: 90%;
     height: 150px;
-    border-radius: 4px 4px 0 0;
+    z-index: 5;
+    /*border-radius: 4px 4px 0 0;*/
 }
 
 img.bioimage {
@@ -56,8 +63,9 @@ img.bioimage {
     display: inline-block;
     margin: 7px;
     padding: 15px 10px;
-    max-width: 75%;
-    width: 324px;
+    /*max-width: 75%;*/
+    width: 270px;
+    height: 350px;
     vertical-align: top;
 }
 
@@ -76,6 +84,20 @@ img.bioimage {
     backface-visibility: hidden;
 }
 
+.spine {
+    position: absolute;
+    width: 10%;
+    height: inherit;
+    background: linear-gradient( to right, transparent 0.3em, rgba(0,0,0,0.1) 0.55em, rgba(0,0,0,0.03) 1.0em, rgba(255,255,255,0.1) 1.2em, rgba(255,255,255,0.05) 1.3em, transparent 1.1em );
+    z-index: 30;
+    top: 15px;
+    left: 12px;
+    background-size: 100px 1em;
+    background-repeat: repeat-y;
+    opacity: 0.8;
+}
+
+
 div.book-tile {
     margin-bottom: 10px;
     padding-bottom: 10px;
@@ -83,24 +105,32 @@ div.book-tile {
 }
 
 div.book-tile-content {
-    background-color: #eeeeff;
-    transition: background-color 250ms ease-out;
-    box-shadow: 5px 5px 5px #888;
+    background-color: #f0f1f5;
+/*    background: linear-gradient( to right, transparent 0.3em, rgba(0,0,0,0.1) 0.6em, rgba(0,0,0,0.05) 0.9em, rgba(255,255,255,0.1) 1em, rgba(255,255,255,0.05) 1em, transparent 1.1em );
+    background-size: 100px 1em;
+    background-repeat: repeat-y;*/
+/*    transition: background-color 250ms ease-out;
     transform-origin: center;
-    transition: .3s;
+    transition: .3s;*/
+    box-shadow: 5px 5px 5px #888;
     border-radius: 4px;
-    height: 280px;
+    height: 320px;
+    /*z-index: 30;*/
 }
 
 div.col-sm-4.book-tile.details-close div.book-tile-content:hover {
-    background-color: #fff;
-    transform: scale(1.04);
+    /*background-color: #fff;
+    transform: scale(1.04);*/
+    box-shadow: 1px 1px 10px 10px #99f;
+    transition: box-shadow .3s;
 }
 
 
 .book-tile-content figcaption {
-    padding: 0 2em;
+    /*padding: 2em 2em;*/
+    padding-top: 20px;
     text-align: center;
+    z-index: 5;
 }
 
 .book-tile-content figcaption h2 {
@@ -142,8 +172,8 @@ div.col-sm-4.book-tile.details-close div.book-tile-content:hover {
 }
 
 /* Details background */
-
-.bookshelf .book-tile::before {
+/* drl - needed? doesn't seem to do anything */
+/*.bookshelf .book-tile::before {
     position: absolute;
     visibility: hidden;
     opacity: 0;
@@ -152,7 +182,7 @@ div.col-sm-4.book-tile.details-close div.book-tile-content:hover {
     -webkit-transition: opacity 0.3s, visibility 0s 0.3s;
     transition: opacity 0.3s, visibility 0s 0.3s;
 }
-
+*/
 .bookshelf .book-tile.details-open::before {
     visibility: visible;
     opacity: 1;
@@ -161,7 +191,7 @@ div.col-sm-4.book-tile.details-close div.book-tile-content:hover {
     width: 304px;
     height: 220px;
     margin-top: 75px;
-    margin-left: 10px;
+    /*margin-left: 10px;*/
     background: #fff;
     border-radius: 4px;
     content: '';
@@ -170,22 +200,21 @@ div.col-sm-4.book-tile.details-close div.book-tile-content:hover {
 }
 
 /* Overlay when viewing details */
-
-.bookshelf .book-tile::after {
+/* drl - needed? doesn't seem to do anything */
+/*.bookshelf .book-tile::after {
     position: fixed;
     top: 0;
     left: 0;
     z-index: -1;
     width: 100%;
     height: 0;
-    /*background: rgba(51, 51, 51, 0.1);*/
     content: '';
     opacity: 0;
     -webkit-transition: opacity 0.3s, height 0s 0.3s;
     transition: opacity 0.3s, height 0s 0.3s;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-}
+}*/
 
 .bookshelf .book-tile.details-open::after {
     height: 100%;
@@ -206,7 +235,7 @@ div.col-sm-4.book-tile.details-close div.book-tile-content:hover {
 
 .details ul {
     margin: 0;
-    padding: 60px 30px 0 30px;
+    padding: 40px 20px 10px 20px;
     list-style: none;
     text-align: left;
 }
@@ -241,9 +270,12 @@ div.col-sm-4.book-tile.details-close div.book-tile-content:hover {
 }
 
 .details-open .details {
-    visibility: hidden;
+    visibility: visible;
     opacity: 1;
     z-index: 10;
+    background-color: #d1e2ee;
+    width: 83.5%;
+    left: 29px;
     -webkit-transition: opacity 0.5s, visibility 0s;
     transition: opacity 0.5s, visibility 0s;
 }
@@ -265,7 +297,7 @@ div.col-sm-4.book-tile.details-close div.book-tile-content:hover {
 
 .close-details {
     position: absolute;
-    top: 40px;
+    top: 15px;
     right: 15px;
     visibility: hidden;
     width: 20px;
