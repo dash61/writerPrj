@@ -3,6 +3,7 @@ bin/
 include/
 pip-selfcheck.json
 secret.key.txt
+secret.key.sh
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
