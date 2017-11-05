@@ -4,6 +4,8 @@ include/
 pip-selfcheck.json
 secret.key.txt
 secret.key.sh
+src/writerprj/settings/db_password.py
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

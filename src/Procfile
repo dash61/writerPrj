@@ -1,0 +1,1 @@
+web: gunicorn writerprj.wsgi --log-file -

@@ -18,15 +18,38 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
+def get_env_variable(var_name):
+    """Get the environment variable or return exception """
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        error_msg = "Set the %s environment variable" % var_name
+        raise ImproperlyConfigured(error_msg)
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@oxcdl8+-3s$#pdzz8a$vb=mvr)yq$n%)_)ny+*wqc8-3lx2lu'
+SECRET_KEY = get_env_variable("SECRET_KEY")
+
+# Do something like this instead:
+#from .key import get_key           # DON'T GIT THE key.py FILE!
+#SECRET_KEY = get_key().secret_key  # write a simple fn to return a const like the one above
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# From blog at:  https://www.codingforentrepreneurs.com/blog/configure-email-in-django/
+EMAIL_HOST = 'smtp.gmail.com'  # 'smtp.gmail.com' for gmail
+EMAIL_HOST_USER = 'yourusername@youremail.com'
+EMAIL_HOST_PASSWORD = 'your password'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Your Name <you@email.com>'
+
+ADMINS = (
+    ('You', 'you@email.com'),
+)
+MANAGERS = ADMINS
 
 # Application definition
 
@@ -37,6 +60,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'crispy_forms',
+    'csp',
+    'writerhome',
+    'simple_pagination',
+    'django_blog_it.django_blog_it',
 ]
 
 MIDDLEWARE = [
@@ -47,14 +76,32 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'csp.middleware.CSPMiddleware',
 ]
 
+# Disquss details
+DISQUS_SHORTNAME="www-zobasoft-biz-example-1"
+
+# Keep our policy as strict as possible
+if DEBUG:
+    # CSP_SCRIPT_SRC = ("'self'", 'https://code.jquery.com', 'cdnjs.cloudflare.com', 'maxcdn.bootstrapcdn.com')
+    CSP_SCRIPT_SRC = ("'self'", 'http://localhost', 'c.disquscdn.com', 'ajax.googleapis.com', 'disqus.com', 'www-zobasoft-biz-example-1.disqus.com', 'cdnjs.cloudflare.com', 'maxcdn.bootstrapcdn.com', "'unsafe-inline'", "'unsafe-eval'")
+    CSP_STYLE_SRC = ("'self'", 'code.jquery.com', 'c.disquscdn.com', 'cdnjs.cloudflare.com', 'maxcdn.bootstrapcdn.com', 'use.fontawesome.com', 'fonts.googleapis.com', "'unsafe-inline'")
+    CSP_FONT_SRC = ("'self'", 'cdnjs.cloudflare.com', 'maxcdn.bootstrapcdn.com', 'use.fontawesome.com', 'fonts.gstatic.com')
+    CSP_IMG_SRC = ("'self'",)
+    CSP_DEFAULT_SRC = ("'self'", 'http://localhost')
+    #CSP_REPORT_URI = 'csp_report.json'
+    CSP_OBJECT_SRC = ("'none'",)
+    CSP_BASE_URI = ("'none'",)
+    CSP_FRAME_SRC = CSP_SCRIPT_SRC
+    CSP_CHILD_SRC = ('disqus.com',)
+    #CSP_CONNECT_SRC for ajax calls or websockets
 ROOT_URLCONF = 'writerprj.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -102,15 +149,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -118,3 +160,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    #'/var/www/static/',
+]
+
+MEDIA_URL = '/media_cdn/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
+
+LOGIN_URL = '/login/'
+LOGOUT_REDIRECT_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+
+# Crispy form tags settings:
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
