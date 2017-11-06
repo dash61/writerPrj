@@ -34,7 +34,7 @@ SECRET_KEY = get_env_variable("SECRET_KEY")
 #SECRET_KEY = get_key().secret_key  # write a simple fn to return a const like the one above
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
