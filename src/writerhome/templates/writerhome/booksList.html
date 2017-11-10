@@ -31,7 +31,9 @@
             <div class='col-sm-4 book-tile details-close'>
                 <div class='book-tile-content'>
                     <div class='book gallery'>
-                        <img src={{ obj.image.url }}>
+                        {% with 'img/'|add:obj.image.name as image_static %}
+                            <img src={% static image_static %}>
+                        {% endwith %}
                     </div>
                     <figcaption>
                         <h2>{{ obj.title|capfirst }}</h2>

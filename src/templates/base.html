@@ -14,7 +14,7 @@
     <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' http://localhost; img-src 'self' https://*; child-src 'none'; script-src 'self' http://localhost c.disquscdn.com ajax.googleapis.com cdnjs.cloudflare.com maxcdn.bootstrapcdn.com www-zobasoft-biz-example-1.disqus.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' http://localhost c.disquscdn.com code.jquery.com cdnjs.cloudflare.com maxcdn.bootstrapcdn.com fonts.googleapis.com use.fontawesome.com 'unsafe-inline'; font-src 'self' cdnjs.cloudflare.com maxcdn.bootstrapcdn.com use.fontawesome.com fonts.gstatic.com; frame-src disqus.com">
-
+    <link rel="shortcut icon" href="{% static "img/favicon.ico" %}" type="image/ico">
     {% include 'snippets/css.html' %}
 
     <!-- bootstrap 3.3.7 relies on an *older* jquery, older than 3.2.1 -->
@@ -24,7 +24,7 @@
 <body>
     <div id="wrapper">
         <div id="header">
-            <a href="/"><img height='70px' width='70px' style='float:left;border-radius:4px' src="{% static 'img/mangaAvatar.png' %}" alt='avatar'></a>
+            <a href="/"><img height='70px' width='70px' style='float:left;border-radius:4px' src="{% static 'img/mangaAvatar.PNG' %}" alt='avatar'></a>
             <a href="/" id="top-header-link"><h1 id="top-header"> &nbsp; Arthur D. Books</h1></a>
             {% include 'snippets/sidebar.html' %}
         </div>

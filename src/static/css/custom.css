@@ -290,7 +290,7 @@ img, svg {
     font-weight: 400;
     font-style: normal;
     src: url(../fonts/GT-Pressura-Mono-Regular-1c53e7a7a3.eot);
-    src: url(../fonts/GT-Pressura-Mono-Regular-1c53e7a7a3.eot?#iefix) format("embedded-opentype"), url(../fonts/GT-Pressura-Mono-Regular-c26cfc9a58.woff2) format("woff2"), url(../fonts/GT-Pressura-Mono-Regular-54b1c32ff1.woff) format("woff"), url(../fonts/GT-Pressura-Mono-Regular-3bd9603567.svg#Eczar) format("svg")
+    src: url(../fonts/GT-Pressura-Mono-Regular-c26cfc9a58.woff2) format("woff2");
 }
 
 .icon {

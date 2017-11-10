@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"D",
+				"DEBUG"
+			],
+			[
 				"mar",
 				"margin-right"
 			],
@@ -423,41 +427,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/static/css/custom.css",
-			"settings":
-			{
-				"buffer_size": 7478,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/writerhome/urls.py",
-			"settings":
-			{
-				"buffer_size": 1110,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/writerprj/settings/__init__.py",
-			"settings":
-			{
-				"buffer_size": 94,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/writerprj/settings/production.py",
-			"settings":
-			{
-				"buffer_size": 3123,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -516,7 +485,6 @@
 		"/Users/don/AppDev/Projects/writerprj/src",
 		"/Users/don/AppDev/Projects/writerprj/src/static",
 		"/Users/don/AppDev/Projects/writerprj/src/templates",
-		"/Users/don/AppDev/Projects/writerprj/src/templates/snippets",
 		"/Users/don/AppDev/Projects/writerprj/src/writerhome",
 		"/Users/don/AppDev/Projects/writerprj/src/writerhome/templates",
 		"/Users/don/AppDev/Projects/writerprj/src/writerprj",
@@ -524,6 +492,16 @@
 	],
 	"file_history":
 	[
+		"/Users/don/AppDev/Projects/writerprj/src/writerprj/settings/local.py",
+		"/Users/don/AppDev/Projects/writerprj/src/writerprj/settings/base.py",
+		"/Users/don/AppDev/Projects/writerprj/.gitignore",
+		"/Users/don/AppDev/Projects/writerprj/src/writerprj/settings/production.py",
+		"/Users/don/AppDev/Projects/writerprj/src/writerprj/settings/__init__.py",
+		"/Users/don/AppDev/Projects/writerprj/src/static/css/custom.css",
+		"/Users/don/AppDev/Projects/writerprj/src/writerprj/settings/.db_password",
+		"/Users/don/AppDev/Projects/writerprj/src/Procfile",
+		"/Users/don/AppDev/Projects/writerprj/src/writerhome/urls.py",
+		"/Users/don/Library/Application Support/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
 		"/Users/don/AppDev/Projects/writerprj/src/writerprj/secret.key.sh",
 		"/Users/don/AppDev/Projects/writerprj/README.md",
 		"/Users/don/AppDev/Projects/writerprj/src/writerhome/forms.py",
@@ -537,8 +515,6 @@
 		"/Users/don/AppDev/Projects/writerprj/src/templates/snippets/form-snippet.html",
 		"/Users/don/AppDev/Python/snippets.py",
 		"/Users/don/AppDev/Projects/writerprj/src/writerprj/urls.py",
-		"/Users/don/AppDev/Projects/writerprj/src/writerprj/settings/base.py",
-		"/Users/don/AppDev/Projects/writerprj/src/writerhome/urls.py",
 		"/Users/don/AppDev/src_examples/Django/try-django-19/src/trydjango19/urls.py",
 		"/Users/don/AppDev/Projects/writerprj/src/writerhome/admin.py",
 		"/Users/don/AppDev/Projects/writerprj/src/templates/base.html",
@@ -564,14 +540,12 @@
 		"/Users/don/AppDev/Projects/writerprj/src/templates/snippets/crytpo_navbar.html",
 		"/Users/don/AppDev/Projects/writerprj/src/static/css/crypto_sidebar.css",
 		"/Users/don/AppDev/Projects/writerprj/writerprj.sublime-project",
-		"/Users/don/Library/Application Support/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
 		"/Users/don/Library/Application Support/Sublime Text 3/Packages/User/Anaconda.sublime-settings",
 		"/Users/don/Library/Application Support/Sublime Text 3/Packages/Djaneiro/Settings/HTML (Django).sublime-settings",
 		"/Users/don/Library/Application Support/Sublime Text 3/Packages/User/HTML (Django).sublime-settings",
 		"/Users/don/AppDev/Projects/writerprj/lib/python3.5/site-packages/django/views/generic/base.py",
 		"/Users/don/AppDev/Projects/writerprj/src/templates/blog.html",
 		"/Users/don/AppDev/Projects/writerprj/src/templates/snippets/crytpo_sidebar.html",
-		"/Users/don/AppDev/Projects/writerprj/src/static/css/custom.css",
 		"/Users/don/AppDev/Projects/writerprj/src/templates/snippets/cryptotrader.css",
 		"/Users/don/AppDev/Projects/writerprj/src/templates/about.html",
 		"/Users/don/AppDev/Projects/writerprj/src/templates/registration/register.html",
@@ -585,7 +559,6 @@
 		"/Users/don/AppDev/Projects/writerprj/src/writerhome/templates/writerhome/writerprjallbooks_detail.html",
 		"/Users/don/AppDev/Projects/writerprj/src/writerhome/__init__.py",
 		"/Users/don/AppDev/Projects/writerprj/src/writerhome/apps.py",
-		"/Users/don/AppDev/Projects/writerprj/src/writerprj/settings/__init__.py",
 		"/Users/don/AppDev/Projects/writerprj/src/writerprj/wsgi.py",
 		"/Users/don/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/Users/don/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
@@ -646,16 +619,11 @@
 		"/Users/don/AppDev/django/django_ev/src/templates/registration/activation_email_subject.txt",
 		"/Users/don/AppDev/django/django_ev/src/static/css/bootstrap.min.css",
 		"/Users/don/AppDev/django/django_ev/lib/python3.5/site-packages/Django-1.10.4-py3.5.egg/django/template/defaultfilters.py",
-		"/Users/don/AppDev/django/django_ev/lib/python3.5/collections/__init__.py",
-		"/Users/don/AppDev/django/django_ev/src/blog/views.py",
-		"/Users/don/AppDev/django/django_ev/src/templates/post_form.html",
-		"/Users/don/AppDev/django/django_ev/src/templates/post_list.html",
-		"/Users/don/AppDev/django/django_ev/src/templates/post_detail.html",
-		"/Users/don/AppDev/django/django_ev/src/blogApp/templatetags/urlify.py"
+		"/Users/don/AppDev/django/django_ev/lib/python3.5/collections/__init__.py"
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
@@ -737,147 +705,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/static/css/custom.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7478,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 253.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/writerhome/urls.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1110,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								141,
-								141
-							]
-						],
-						"settings":
-						{
-							"auto_complete_triggers":
-							[
-								{
-									"characters": ".",
-									"selector": "source.python - string - comment - constant.numeric"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								}
-							],
-							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/writerprj/settings/__init__.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 94,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								94,
-								94
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/writerprj/settings/production.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3123,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								434,
-								434
-							]
-						],
-						"settings":
-						{
-							"auto_complete_triggers":
-							[
-								{
-									"characters": ".",
-									"selector": "source.python - string - comment - constant.numeric"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								}
-							],
-							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1303.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				}
 			]
 		}
 	],
