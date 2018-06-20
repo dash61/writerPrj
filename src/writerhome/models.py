@@ -7,7 +7,7 @@ from .validators import validate_price
 User = settings.AUTH_USER_MODEL
 
 class WriterPrjAllBooksQuerySet(models.query.QuerySet):
-    def search(self, query): # WriterPrjAllBooks.objects.all().search(query) or WriterPrjAllBooks.objects.filter(something).search()
+    def search(self, query):
         if query:
             query = query.strip()  # strip out whitespace on front and back, if any
             return self.filter(
@@ -24,17 +24,12 @@ class WriterPrjAllBooksManager(models.Manager):
     def get_queryset(self):
         return WriterPrjAllBooksQuerySet(self.model, using=self._db)  # using same db
 
-    def search(self, query): # WriterPrjAllBooks.objects.search()
+    def search(self, query):
         return self.get_queryset().search(query)
 
-# You need a profile class if users are going to register and/or login.
-# Video - https://www.youtube.com/watch?v=yDv5FIAeyoY
-# CFE's try django 1.11.
-# See video chapters 44&45 (7:28:13, 7:46:53) for details on registering.
-# User profile starts at either chapter 37 (5:35:42) or 38 (5:54:00).
 
 class WriterPrjAllBooks(models.Model):
-    owner       = models.ForeignKey(User) # added at 4:02:00; call owner so as not to confuse with User
+    owner       = models.ForeignKey(User) # name this 'owner' so as not to confuse with User
     title       = models.CharField(max_length=128, blank=False, null=False)
     author      = models.CharField(max_length=100, blank=False, null=False)
     subtitle    = models.CharField(max_length=255, blank=True)
@@ -55,24 +50,3 @@ class WriterPrjAllBooks(models.Model):
 
     def get_absolute_url(self):
         return reverse('writerhome:detail', kwargs={'slug': self.slug})
-
-    # Fn that was on CFE's Profile model class, might need here (need to save email also).
-    # This call should be at the user level, not book objects. So put it somewhere else for now.
-    # def send_activation_email(self):  # could use celery to delay the email; look up
-    #     print("Activating email now")
-    #     pass
-
-    # Use this if you don't have a title field; it will work with the utils.py
-    # function 'unique_slug_generator'. Otherwise, comment this out.
-    # @property
-    # def title(self):
-    #     return self.name
-
-
-# examples to use from codrops:
-# css:
-# 3dbookshowcase
-# BookBlock (mary lou)
-# Fullscreen grid portfolio
-
-# use lghtmesh.png backgnd from css/css3rotatingwords/images dir.

@@ -29,10 +29,6 @@ def get_env_variable(var_name):
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = get_env_variable("SECRET_KEY")
 
-# Do something like this instead:
-#from .key import get_key           # DON'T GIT THE key.py FILE!
-#SECRET_KEY = get_key().secret_key  # write a simple fn to return a const like the one above
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -84,18 +80,15 @@ DISQUS_SHORTNAME="www-zobasoft-biz-example-1"
 
 # Keep our policy as strict as possible
 if DEBUG:
-    # CSP_SCRIPT_SRC = ("'self'", 'https://code.jquery.com', 'cdnjs.cloudflare.com', 'maxcdn.bootstrapcdn.com')
     CSP_SCRIPT_SRC = ("'self'", 'http://localhost', 'c.disquscdn.com', 'ajax.googleapis.com', 'disqus.com', 'www-zobasoft-biz-example-1.disqus.com', 'cdnjs.cloudflare.com', 'maxcdn.bootstrapcdn.com', "'unsafe-inline'", "'unsafe-eval'")
     CSP_STYLE_SRC = ("'self'", 'code.jquery.com', 'c.disquscdn.com', 'cdnjs.cloudflare.com', 'maxcdn.bootstrapcdn.com', 'use.fontawesome.com', 'fonts.googleapis.com', "'unsafe-inline'")
     CSP_FONT_SRC = ("'self'", 'cdnjs.cloudflare.com', 'maxcdn.bootstrapcdn.com', 'use.fontawesome.com', 'fonts.gstatic.com')
     CSP_IMG_SRC = ("'self'",)
     CSP_DEFAULT_SRC = ("'self'", 'http://localhost')
-    #CSP_REPORT_URI = 'csp_report.json'
     CSP_OBJECT_SRC = ("'none'",)
     CSP_BASE_URI = ("'none'",)
     CSP_FRAME_SRC = CSP_SCRIPT_SRC
     CSP_CHILD_SRC = ('disqus.com',)
-    #CSP_CONNECT_SRC for ajax calls or websockets
 ROOT_URLCONF = 'writerprj.urls'
 
 TEMPLATES = [

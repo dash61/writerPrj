@@ -11,11 +11,11 @@ from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
 from django.core.urlresolvers import reverse_lazy
 from .models import WriterPrjAllBooks
-from .forms import BookCreateForm, WriterPrjAllBooksCreateForm, RegisterForm, ContactForm
+from .forms import WriterPrjAllBooksCreateForm, RegisterForm, ContactForm
 
 
 # from https://kirr.co/bhpno4,   src->accounts->views.py, except he is modifying that code to do class based views
-# This is for user registration, video chapter 44.
+# This is for user registration.
 class RegisterView(CreateView):
     form_class = RegisterForm
     template_name = 'registration/register.html'
@@ -29,7 +29,6 @@ class RegisterView(CreateView):
 
 # from https://github.com/codingforentrepreneurs/Django-User-Model-Unleashed/blob/master/src/accounts/views.py,
 # at the end. We need a view for when the user clicks the link in his email.
-# He changes this around for the current project at around 7:56:00+
 def activate_user_view(request, code=None, *args, **kwargs):
     if code:
         qs = Profile.objects.filter(activation_key=code)
@@ -46,35 +45,13 @@ def activate_user_view(request, code=None, *args, **kwargs):
     # invalid code
     return redirect("/login")
 
-# OLD STYLE FUNCTION BASED VIEWS, 1ST PASS AT VIEWS.
-# def home(request):
-#     context = {"html_var": "hi there"}
-#     return render(request, "home.html", context)
-
-# def about(request):
-#     context = {"html_var": "hi there"}
-#     return render(request, "about.html", context)
-
-# def contact(request):
-#     context = {"html_var": "hi there"}
-#     return render(request, "contact.html", context)
-
-# old way of doing this; works, but could use less code via TemplateView.
-# your mileage may vary - you may want to do this still for some reason.
-# class ContactView(View):
-#     def get(self, request, *args, **kwargs):  # default arg list
-#         context = {}
-#         return render(request, "contact.html", context)
-#     # could also define put and post methods the same way
 
 class HomeView(TemplateView):
     template_name = 'home.html'
-    #print("inside class HomeView")
 
     # override method of TemplateView to do special stuff:
     def get_context_data(self, *args, **kwargs):
         context = super(HomeView, self).get_context_data(*args, **kwargs)
-        #print (context)
         return context
 
 class AboutView(TemplateView):
@@ -93,7 +70,6 @@ class ContactManagerView(View):
     template_name = 'snippets/contact_manager.html'
     title = 'Contact Us'
     title_align_center = True
-    #print ("inside ContactManagerView")
 
     def get(self, request, *args, **kwargs):  # default arg list
         context = {
@@ -106,7 +82,6 @@ class ContactManagerView(View):
     # This gets called when the form is successfully posted (ie, has no errors and Submit
     # is pressed). We don't need to do anything here but render the success html file.
     def post(self, request, *args, **kwargs):  # default arg list
-        print ("inside post function")
         form_email = request.POST.get('email', '')
         form_message = request.POST.get('message', '')
         form_full_name = request.POST.get('full_name', '')
@@ -134,55 +109,29 @@ class ContactManagerView(View):
         return render(request, "snippets/contact_manager_success.html", {})
 
 class CreditsView(TemplateView):
-    #print("inside class CreditsView")
     template_name = 'credits.html'
 
 class LicenseView(TemplateView):
-    #print("inside class LicenseView")
     template_name = 'license.html'
 
 class BioView(TemplateView):
-    #print("inside class BioView")
     template_name = 'bio.html'
 
-# class BlogView(TemplateView):
-#     print("inside class BlogView")
-#     template_name = 'blog.html'
-
-@login_required() # login_url='/login/') #  - MOVED login_url TO BASE.PY SETTINGS FILE
+@login_required()
 def book_createview(request):
-    # form = BookCreateForm(request.POST or None)   # BETTER WAY OF DOING THINGS, BUT NOT BEST WAY
-    # errors = None
-    # if form.is_valid():
-    #     obj = WriterPrjAllBooks.objects.create(
-    #             title = form.cleaned_data.get('title'),
-    #             subtitle = form.cleaned_data.get('subtitle'),
-    #             price = form.cleaned_data.get('price')
-    #         )
-    #     return HttpResponseRedirect("/books/")
-    # if form.errors:
-    #     errors = form.errors
-           
-    # template_name = 'writerhome/form.html'
-    # context = {"form": form, "errors": errors}
-    # return render(request, template_name, context)
-    form = WriterPrjAllBooksCreateForm(request.POST or None) # BETTER WAY #2; SEE BookCreateView for BEST way (near bottom)
+    form = WriterPrjAllBooksCreateForm(request.POST or None)
     errors = None
     if form.is_valid():
-        if request.user.is_authenticated():  # added this during 'adding user to db' series, see 4:20:00
+        if request.user.is_authenticated():
             instance = form.save(commit=False) # not saved yet, but we do have an instance
             instance.owner = request.user
             instance.save()
             return HttpResponseRedirect("/books/")
-        # can customize here, similar to a pre-save thing, OR can really use the signals and do this during pre-save
-#        form.save()
-        # can customize here, similar to a post-save thing, ditto
-#        return HttpResponseRedirect("/books/")
         else:
             return HttpResponseRedirect('/login/')  # will deal with this later
     if form.errors:
         errors = form.errors
-           
+
     template_name = 'writerhome/form.html'  # this file doesn't exist yet!
     context = {"form": form, "errors": errors}
     return render(request, template_name, context)
@@ -193,40 +142,23 @@ class BooksListView(ListView):
 
     def get_queryset(self):
         return WriterPrjAllBooks.objects.all()
-        # slug = self.kwargs.get("slug") # kwargs is a dict
-        # if slug:
-        #     queryset = WriterPrjAllBooks.objects.filter(
-        #             Q(title__iexact=slug) |
-        #             Q(title__icontains=slug)
-        #         )
-        # else:
-        #     queryset = WriterPrjAllBooks.objects.all()
-        # return queryset
 
     def get_context_data(self, *args, **kwargs):
         context = super(BooksListView, self).get_context_data(*args, **kwargs)
-        #user = self.request.user
-        #print(user)
-        #query = self.request.GET.get('q')
-        #items_exist = WriterPrjAllBooks.objects.filter(owner=user).exists()
-        qs = WriterPrjAllBooks.objects.all() # WriterPrjAllBooks.objects.filter(owner=user).search(query)
-        #if items_exist and qs.exists():
+        qs = WriterPrjAllBooks.objects.all()
         if qs.exists():
             context['books'] = qs
         return context
 
-# BEST way of doing forms
 # NOTE - THIS SHOULDN'T BE LOGIN REQUIRED, BUT ADMIN REQUIRED
-class BookCreateView(LoginRequiredMixin, CreateView): # use mixin for class based views
+class BookCreateView(LoginRequiredMixin, CreateView):
     form_class = WriterPrjAllBooksCreateForm
     template_name = 'form.html' # points now to more generic file in topmost templates folder
-    #login_url = '/login/'    # add this for the login mixin - MOVED TO BASE.PY SETTINGS FILE
-    success_url = '/books/'  # one way to do this; another is to define get_absolute_url on the model
+    success_url = '/books/'     # one way to do this; another is to define get_absolute_url on the model
 
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.owner = self.request.user
-        #instance.save()  # should not be needed here, done in super
         return super(BookCreateView, self).form_valid(form)
 
     def get_context_data(self, *args, **kwargs):
@@ -234,13 +166,11 @@ class BookCreateView(LoginRequiredMixin, CreateView): # use mixin for class base
         context['title'] = 'Add A Book'
         return context
 
-# BEST way of doing forms
 # NOTE - THIS SHOULDN'T BE LOGIN REQUIRED, BUT ADMIN REQUIRED
-class BookUpdateView(LoginRequiredMixin, UpdateView): # use mixin for class based views
+class BookUpdateView(LoginRequiredMixin, UpdateView):
     form_class = WriterPrjAllBooksCreateForm
     template_name = 'writerhome/detail-update.html' # new to be able to view detail and update at the same time
-    login_url = '/login/'    # add this for the login mixin - MOVED TO BASE.PY SETTINGS FILE
-    #success_url = '/books/'  # one way to do this; another is to define get_absolute_url on the model
+    login_url = '/login/'  # add this for the login mixin - MOVED TO BASE.PY SETTINGS FILE
 
     def get_context_data(self, *args, **kwargs):
         context = super(BookUpdateView, self).get_context_data(*args, **kwargs)

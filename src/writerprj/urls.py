@@ -21,7 +21,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from writerhome.views import (
     HomeView, AboutView, RegisterView, activate_user_view,
     BioView, ContactManagerView,
-    CreditsView, LicenseView) # use ()s to put on multiple lines (if a lot)
+    CreditsView, LicenseView)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls, name='admin'),
@@ -30,25 +30,15 @@ urlpatterns = [
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^logout/$', LogoutView.as_view(), name='logout'),
     url(r'^about/$', AboutView.as_view(), name='about'),
-    url(r'^contact/$', ContactManagerView.as_view(), name='contact'),  # old: url(r'^contact/$', contact),
+    url(r'^contact/$', ContactManagerView.as_view(), name='contact'),
     url(r'^bio/$', BioView.as_view(), name='bio'),
     url(r'^credits/$', CreditsView.as_view(), name='credits'),
     url(r'^license/$', LicenseView.as_view(), name='license'),
-    #url(r'^blog/$', BlogView.as_view(), name='blog'),
     url(r'^blog/', include('django_blog_it.urls')),
     url(r'^books/', include('writerhome.urls', namespace='writerhome')), # now url includes books
     url(r'^$', HomeView.as_view(), name='home'),
 ]
-# This finally fixed viewing the images on the booklist, using <img src={{ obj.image.url }}>.
-# It did not help to put this in the other URLs.py file.
+# This allows viewing the images on the booklist, using <img src={{ obj.image.url }}>.
 if settings.DEBUG:
     urlpatterns += (static(settings.STATIC_URL, document_root=settings.STATIC_ROOT))
     urlpatterns += (static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))
-
-# could do - use template views here and not even have the template class function in views.py.
-# I suspect that is only good for simple pages that don't override functions or have extra context needs:
-    # url(r'^about/$', TemplateView.as_view(template_name='about.html'), name='about'),
-    # url(r'^contact/$', TemplateView.as_view()(template_name='contact.html', name='contact')
-
-# could do:    url(r'^contact/(?P<id>\d+)/$', ContactView.as_view()),  # old: contact; allow some id arg here
-# In ContactView fn, id will be in kwargs as { id: ### }

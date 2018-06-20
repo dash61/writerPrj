@@ -13,7 +13,6 @@ body, html {
     width: 100%;
     padding: 0;
     margin: 0;
-    /*box-sizing: */
 }
 
 body {
@@ -102,11 +101,6 @@ my-title {
         padding-top: 0px;
         margin-top: 0px;
     }
-/*    #sidebar {
-        width: 65%;
-        margin-left: auto;
-        margin-right: auto;
-    }*/
 }
 /* Use the following for 595 - 625 */
 @media (min-width: 629px) and (max-width: 645px) {
@@ -138,7 +132,6 @@ my-title {
 
 #footer-div {
     background: rgba(19, 54, 87, 1.0);
-/*    background: linear-gradient(to top, rgba(38,108,173,.6), rgba(255, 255, 255, .07));*/
     bottom: 0;
     width: 100%;
     position: fixed;
@@ -254,7 +247,6 @@ img.idle {
 
 .mytooltip .mytooltiptext {
     visibility: hidden;
-    /*transition: visibility 0.5s;*/
     width: 80px;
     background-color: transparent;
     color: #266CAD;
@@ -318,7 +310,6 @@ img, svg {
 }
 
 .modal {
-    /*background-color: rgba(255,255,255,0.8);*/
     color:rgba(38,108,173,1.0);
 }
 
