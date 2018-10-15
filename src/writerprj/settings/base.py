@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from django.conf import settings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -24,7 +25,8 @@ def get_env_variable(var_name):
         return os.environ[var_name]
     except KeyError:
         error_msg = "Set the %s environment variable" % var_name
-        raise ImproperlyConfigured(error_msg)
+        raise settings.ImproperlyConfigured(error_msg)
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = get_env_variable("SECRET_KEY")
@@ -76,19 +78,33 @@ MIDDLEWARE = [
 ]
 
 # Disquss details
-DISQUS_SHORTNAME="www-zobasoft-biz-example-1"
+DISQUS_SHORTNAME = "www-zobasoft-biz-example-1"
 
 # Keep our policy as strict as possible
 if DEBUG:
-    CSP_SCRIPT_SRC = ("'self'", 'http://localhost', 'c.disquscdn.com', 'ajax.googleapis.com', 'disqus.com', 'www-zobasoft-biz-example-1.disqus.com', 'cdnjs.cloudflare.com', 'maxcdn.bootstrapcdn.com', "'unsafe-inline'", "'unsafe-eval'")
-    CSP_STYLE_SRC = ("'self'", 'code.jquery.com', 'c.disquscdn.com', 'cdnjs.cloudflare.com', 'maxcdn.bootstrapcdn.com', 'use.fontawesome.com', 'fonts.googleapis.com', "'unsafe-inline'")
-    CSP_FONT_SRC = ("'self'", 'cdnjs.cloudflare.com', 'maxcdn.bootstrapcdn.com', 'use.fontawesome.com', 'fonts.gstatic.com')
+    CSP_SCRIPT_SRC = ("'self'", 'http://localhost', 'c.disquscdn.com',
+                      'ajax.googleapis.com', 'disqus.com',
+                      'www-zobasoft-biz-example-1.disqus.com',
+                      'cdnjs.cloudflare.com',
+                      'maxcdn.bootstrapcdn.com', "'unsafe-inline'")
+    CSP_STYLE_SRC = ("'self'", 'code.jquery.com', 'c.disquscdn.com',
+                     'cdnjs.cloudflare.com',
+                     'maxcdn.bootstrapcdn.com', 'use.fontawesome.com',
+                     'fonts.googleapis.com')
+    CSP_FONT_SRC = ("'self'", 'cdnjs.cloudflare.com', 'maxcdn.bootstrapcdn.com',
+                    'use.fontawesome.com', 'fonts.gstatic.com')
     CSP_IMG_SRC = ("'self'",)
     CSP_DEFAULT_SRC = ("'self'", 'http://localhost')
     CSP_OBJECT_SRC = ("'none'",)
     CSP_BASE_URI = ("'none'",)
     CSP_FRAME_SRC = CSP_SCRIPT_SRC
     CSP_CHILD_SRC = ('disqus.com',)
+
+# Security middleware settings for security purposes.
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_FRAME_DENY = True
+
 ROOT_URLCONF = 'writerprj.urls'
 
 TEMPLATES = [
@@ -156,7 +172,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    #'/var/www/static/',
+    # '/var/www/static/',
 ]
 
 MEDIA_URL = '/media_cdn/'
@@ -168,4 +184,3 @@ LOGIN_REDIRECT_URL = '/'
 
 # Crispy form tags settings:
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
-
