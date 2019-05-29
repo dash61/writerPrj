@@ -7,6 +7,11 @@ This is a sample site for a fictional writer who has a number of books published
 * Uses Python 3.5
 * See requirements.txt for a list of installed modules and their versions
 
+## Screenshot
+
+![screenshot](https://i.imgur.com/RuKgPWu.png)
+
+
 ### Notes ###
 
 * It originally had a sidebar before this was moved to the top right, but the sidebar.html file is still used for those buttons.
