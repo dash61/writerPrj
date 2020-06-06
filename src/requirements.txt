@@ -9,7 +9,7 @@ django-csp==3.3
 django-simple-pagination==1.1.8
 django-storages==1.6.5
 gunicorn==19.7.1
-idna==2.6
+idna==2.9
 microurl==0.1.1
 olefile==0.44
 Pillow==4.2.1
