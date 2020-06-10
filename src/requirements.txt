@@ -11,7 +11,7 @@ django-storages==1.9.1
 gunicorn==20.0.4
 idna==2.9
 microurl==0.1.1
-olefile==0.44
+olefile==0.46
 Pillow==6.2.2
 psycopg2==2.8.5
 pytz==2020.1
