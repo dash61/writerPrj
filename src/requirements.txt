@@ -15,5 +15,5 @@ olefile==0.46
 Pillow==6.2.2
 psycopg2==2.8.5
 pytz==2020.1
-requests==2.23.0
+requests==2.24.0
 urllib3==1.25.9
