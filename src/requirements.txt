@@ -12,7 +12,7 @@ gunicorn==20.1.0
 idna==3.3
 microurl==0.1.1
 olefile==0.46
-Pillow==9.1.0
+Pillow==9.1.1
 psycopg2==2.9.3
 pytz==2022.1
 requests==2.27.1
