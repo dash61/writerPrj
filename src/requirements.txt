@@ -1,6 +1,6 @@
 boto==2.49.0
 certifi==2022.6.15
-chardet==4.0.0
+chardet==5.0.0
 dj-database-url==0.5.0
 Django==4.0.5
 django-blog-it==0.3.1
