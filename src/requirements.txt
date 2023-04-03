@@ -2,7 +2,7 @@ boto==2.49.0
 certifi==2022.12.7
 chardet==5.1.0
 dj-database-url==1.2.0
-Django==4.1.5
+Django==4.2
 django-blog-it==0.3.1
 django-crispy-forms==1.14.0
 django-csp==3.7
